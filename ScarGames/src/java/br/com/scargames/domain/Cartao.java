@@ -1,49 +1,39 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.scargames.domain;
 
 import java.io.Serializable;
-import java.util.List;
+import java.time.LocalDate;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-/**
- *
- * @author arauj
- */
 @Entity
-@Table(name="genero")
-public class Genero implements Serializable {
-    
+@Table(name="cartao")
+public class Cartao implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
-    
     @NotNull
-    @Column(name="descricao")
-    @Size(min=1,max=45)
-    private String descricao;
-    
-    @OneToMany(mappedBy="id")
-    private List<Jogo> jogos;
-    
-    public Genero() {
+    @Column(name="numero")
+    @Size(min=16,max=16)
+    private String numero;
+    @NotNull
+    @Column(name="vencimento")
+    private LocalDate vencimento;
+    private Bandeira bandeira;
+
+    public Cartao() {
     }
 
-    public Genero(Integer id, String descricao) {
+    public Cartao(Integer id, String numero, LocalDate vencimento) {
         this.id = id;
-        this.descricao = descricao;
+        this.numero = numero;
+        this.vencimento = vencimento;
     }
 
     public Integer getId() {
@@ -54,26 +44,26 @@ public class Genero implements Serializable {
         this.id = id;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public String getNumero() {
+        return numero;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setNumero(String numero) {
+        this.numero = numero;
     }
 
-    public List<Jogo> getJogos() {
-        return jogos;
+    public LocalDate getVencimento() {
+        return vencimento;
     }
 
-    public void setJogos(List<Jogo> jogos) {
-        this.jogos = jogos;
+    public void setVencimento(LocalDate vencimento) {
+        this.vencimento = vencimento;
     }
-    
+
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 37 * hash + Objects.hashCode(this.id);
+        hash = 29 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -88,12 +78,10 @@ public class Genero implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Genero other = (Genero) obj;
+        final Cartao other = (Cartao) obj;
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
         return true;
     }
-    
-    
 }

@@ -1,6 +1,7 @@
 package br.com.scargames.domain;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,7 +24,8 @@ public class Bandeira implements Serializable{
     @Column(name="descricao")
     @Size(min=1,max=45)
     private String descricao;
-
+    
+    private List<Cartao> cartoes;
     
     public Bandeira() {
     

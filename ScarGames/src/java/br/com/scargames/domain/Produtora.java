@@ -1,5 +1,6 @@
 package br.com.scargames.domain;
 
+import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,7 +13,7 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="produtora")
-public class Produtora {
+public class Produtora implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
