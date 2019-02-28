@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -59,7 +60,12 @@ public class Usuario implements Serializable {
     
     @OneToMany(mappedBy="id")
     private List<Cartao> cartoes;
+    
+    @OneToOne(mappedBy="id")
+    private Biblioteca biblioteca;
+    
     public Usuario() {
+    
     }
     
 
@@ -137,6 +143,32 @@ public class Usuario implements Serializable {
     public void setSenha(String senha) {
         this.senha = senha;
     }
+
+    public List<Endereco> getEnderecos() {
+        return enderecos;
+    }
+
+    public void setEnderecos(List<Endereco> enderecos) {
+        this.enderecos = enderecos;
+    }
+
+    public List<Cartao> getCartoes() {
+        return cartoes;
+    }
+
+    public void setCartoes(List<Cartao> cartoes) {
+        this.cartoes = cartoes;
+    }
+
+    public Biblioteca getBiblioteca() {
+        return biblioteca;
+    }
+
+    public void setBiblioteca(Biblioteca biblioteca) {
+        this.biblioteca = biblioteca;
+    }
+    
+    
 
     @Override
     public int hashCode() {
