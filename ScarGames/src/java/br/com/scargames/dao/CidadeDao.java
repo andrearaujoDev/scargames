@@ -1,19 +1,18 @@
 package br.com.scargames.dao;
 
-import br.com.scargames.domain.Bandeira;
+import br.com.scargames.domain.Cidade;
 import br.com.scargames.util.HibernateUtil;
-import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
 
-public class BandeiraDao {
-    public List<Bandeira> lista(){
+public class CidadeDao {
+    public List<Cidade> lista(){
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         try{
-            List<Bandeira> lista = session.createQuery("from Bandeira order by descricao asc").list();
+            List<Cidade> cidade = session.createQuery("from Cidade order by nome asc").list();
             session.getTransaction().commit();
-            return lista;
+            return cidade;
         }catch(Exception e){
             session.getTransaction().rollback();
             e.printStackTrace();
@@ -21,13 +20,13 @@ public class BandeiraDao {
         }
     }
     
-    public Bandeira consulta(Integer id){
+    public Cidade consulta(Integer id){
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         try{
-            Bandeira bandeira = (Bandeira) session.createQuery("from Bandeira where id = " + id).uniqueResult();
+            Cidade cidade = (Cidade) session.createQuery("from Cidade where id = " + id).uniqueResult();
             session.getTransaction().commit();
-            return bandeira;
+            return cidade;
         }catch(Exception e){
             session.getTransaction().rollback();
             e.printStackTrace();
@@ -35,11 +34,11 @@ public class BandeiraDao {
         }
     }
     
-    public Boolean inserir(Bandeira bandeira){
+    public Boolean inserir(Cidade cidade){
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         try{
-            session.save(bandeira);
+            session.save(cidade);
             session.getTransaction().commit();
             return true;
         }catch(Exception e){
@@ -50,11 +49,11 @@ public class BandeiraDao {
         
     }
     
-    public Boolean alterar(Bandeira bandeira){
+    public Boolean alterar(Cidade cidade){
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         try{
-            session.update(bandeira);
+            session.update(cidade);
             session.getTransaction().commit();
             return true;
         }catch(Exception e){
@@ -63,11 +62,11 @@ public class BandeiraDao {
             return false;
         }
     }
-    public Boolean excluir(Bandeira bandeira){
+    public Boolean excluir(Cidade cidade){
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         try{
-            session.delete(bandeira);
+            session.delete(cidade);
             session.getTransaction().commit();
             return true;
         }catch(Exception e){
@@ -75,5 +74,5 @@ public class BandeiraDao {
             e.printStackTrace();
             return false;
         }
-    }
+    } 
 }
