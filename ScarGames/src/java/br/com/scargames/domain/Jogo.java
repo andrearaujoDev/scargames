@@ -1,5 +1,6 @@
 package br.com.scargames.domain;
 
+import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,7 +16,7 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="jogo")
-public class Jogo {
+public class Jogo implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer Id;
@@ -38,17 +39,19 @@ public class Jogo {
     @Column(name="notas")
     private Double notas;
     
-    @JoinColumn(name="genero_jogo_id",referencedColumnName="id")
+    @JoinColumn(name="id",referencedColumnName="id")
     @ManyToOne(optional=false)
     private Genero genero;
-    @JoinColumn(name="produtora_jogo_id",referencedColumnName="id")
+    
+    @JoinColumn(name="id",referencedColumnName="id")
     @ManyToOne(optional=false)
     private Produtora produtora;
     
-    @OneToOne(mappedBy="id")
+    @OneToOne(mappedBy="usuario")
     private Biblioteca biblioteca;
     
     public Jogo() {
+        
     }
 
     public Jogo(Integer Id, String titulo, String classificacao, String sinopse, String requisitos, Double notas, Genero genero, Produtora produtora) {

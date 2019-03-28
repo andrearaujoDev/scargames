@@ -1,5 +1,6 @@
 package br.com.scargames.util;
 
+import org.hibernate.HibernateException;
 import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.SessionFactory;
 
@@ -10,9 +11,9 @@ public class HibernateUtil {
     static {
         try {
             sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();
-        } catch (Throwable ex) {
+        } catch (HibernateException ex) {
             System.err.println("Initial SessionFactory creation failed." + ex);
-            throw new ExceptionInInitializerError(ex);
+            throw new ExceptionInInitializerError(ex.getMessage());
         }
     }
     

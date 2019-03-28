@@ -2,6 +2,7 @@ package br.com.scargames.domain;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,19 +19,22 @@ public class Cartao implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
+    
     @NotNull
     @Column(name="numero")
     @Size(min=16,max=16)
     private String numero;
+    
     @NotNull
     @Column(name="vencimento")
-    private LocalDate vencimento;
+    private Date vencimento;
+    
     private Bandeira bandeira;
 
     public Cartao() {
     }
 
-    public Cartao(Integer id, String numero, LocalDate vencimento) {
+    public Cartao(Integer id, String numero, Date vencimento) {
         this.id = id;
         this.numero = numero;
         this.vencimento = vencimento;
@@ -52,11 +56,11 @@ public class Cartao implements Serializable {
         this.numero = numero;
     }
 
-    public LocalDate getVencimento() {
+    public Date getVencimento() {
         return vencimento;
     }
 
-    public void setVencimento(LocalDate vencimento) {
+    public void setVencimento(Date vencimento) {
         this.vencimento = vencimento;
     }
 

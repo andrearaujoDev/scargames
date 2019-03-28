@@ -35,7 +35,7 @@ public class Genero implements Serializable {
     @Size(min=1,max=45)
     private String descricao;
     
-    @OneToMany(mappedBy="id")
+    @OneToMany(mappedBy="id") // Erro
     private List<Jogo> jogos;
     
     public Genero() {

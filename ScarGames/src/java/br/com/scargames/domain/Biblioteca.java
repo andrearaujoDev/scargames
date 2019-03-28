@@ -1,5 +1,6 @@
 package br.com.scargames.domain;
 
+import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,15 +12,15 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="biblioteca")
-public class Biblioteca {
+public class Biblioteca implements Serializable {
     
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer id;
-    @JoinColumn(name="usuario_biblioteca_id",referencedColumnName="id")
+    @JoinColumn(name="id",referencedColumnName="id")
     @OneToOne(optional=false)
     private Usuario usuario;
-    @JoinColumn(name="jogo_biblioteca_id",referencedColumnName="id")
+    @JoinColumn(name="id",referencedColumnName="id")
     @OneToOne(optional=false)
     private Jogo jogo;
 

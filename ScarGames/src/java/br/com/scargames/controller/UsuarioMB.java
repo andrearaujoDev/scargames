@@ -9,8 +9,10 @@ import javax.faces.bean.RequestScoped;
 @ManagedBean(name = "usuarioMB")
 @RequestScoped
 public class UsuarioMB implements Serializable{
+    Usuario usuario = new Usuario();
     
-    private Usuario usuario;
+    public String email;
+    public String senha;
     
     public UsuarioMB() {
         
@@ -18,13 +20,14 @@ public class UsuarioMB implements Serializable{
     
     public String autenticar(){
         UsuarioService usuarioService = new UsuarioService();
+        usuario = new Usuario(email,senha);
         if(usuarioService.autenticar(usuario)){
             return "/private/index.xhtml?faces-redirect=true";
         }else{
             return null;
         }
     }
-
+    
     public Usuario getUsuario() {
         return usuario;
     }
@@ -32,7 +35,20 @@ public class UsuarioMB implements Serializable{
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
-    
-    
-    
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
 }
