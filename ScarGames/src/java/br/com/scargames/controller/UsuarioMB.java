@@ -18,6 +18,11 @@ public class UsuarioMB implements Serializable{
         
     }
     
+    public void inicializarHibernate(){
+        UsuarioService service = new UsuarioService();
+        service.inicializarHibernate();
+    }
+    
     public String autenticar(){
         UsuarioService usuarioService = new UsuarioService();
         usuario = new Usuario(email,senha);

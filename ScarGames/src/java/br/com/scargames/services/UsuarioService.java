@@ -8,6 +8,10 @@ import java.util.List;
 public class UsuarioService {
    UsuarioDao usuarioDao = new UsuarioDao();
     
+   
+   public void inicializarHibernate(){
+       usuarioDao.inicializarHibernate();
+   }
     public List<Usuario> listar(){
         return usuarioDao.lista();
     }
