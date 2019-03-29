@@ -61,7 +61,7 @@ public class Usuario implements Serializable {
     @OneToMany(mappedBy="id")
     private List<Cartao> cartoes;
     
-    @OneToOne(mappedBy="id")
+    @OneToOne(mappedBy="usuario")
     private Biblioteca biblioteca;
     
     public Usuario() {

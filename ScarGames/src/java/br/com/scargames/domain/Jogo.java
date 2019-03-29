@@ -17,60 +17,65 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name="jogo")
 public class Jogo implements Serializable {
+    
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Integer Id;
+    private Integer id;
+    
     @NotNull
     @Column(name="titulo")
     @Size(min=1,max=100)
     private String titulo;
+    
     @NotNull
     @Column(name="classificacao")
-    private String classificacao;
+    private Integer classificacao;
+    
     @NotNull
     @Column(name="sinopse")
     @Size(min=1,max=1000)
     private String sinopse;
+    
     @NotNull
     @Column(name="requisitos")
     @Size(min=1,max=200)
     private String requisitos;
-    @NotNull
-    @Column(name="notas")
-    private Double notas;
     
-    @JoinColumn(name="id",referencedColumnName="id")
+    @NotNull
+    @Column(name="nota")
+    private Double nota;
+    
+    @JoinColumn(name="genero",referencedColumnName="id")
     @ManyToOne(optional=false)
     private Genero genero;
     
-    @JoinColumn(name="id",referencedColumnName="id")
+    @JoinColumn(name="produtora",referencedColumnName="id")
     @ManyToOne(optional=false)
     private Produtora produtora;
     
-    @OneToOne(mappedBy="usuario")
+    @OneToOne(mappedBy="jogo")
     private Biblioteca biblioteca;
-    
+
     public Jogo() {
-        
     }
 
-    public Jogo(Integer Id, String titulo, String classificacao, String sinopse, String requisitos, Double notas, Genero genero, Produtora produtora) {
-        this.Id = Id;
+    public Jogo(Integer id, String titulo, Integer classificacao, String sinopse, String requisitos, Double nota, Genero genero, Produtora produtora) {
+        this.id = id;
         this.titulo = titulo;
         this.classificacao = classificacao;
         this.sinopse = sinopse;
         this.requisitos = requisitos;
-        this.notas = notas;
+        this.nota = nota;
         this.genero = genero;
         this.produtora = produtora;
     }
 
     public Integer getId() {
-        return Id;
+        return id;
     }
 
-    public void setId(Integer Id) {
-        this.Id = Id;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getTitulo() {
@@ -81,11 +86,11 @@ public class Jogo implements Serializable {
         this.titulo = titulo;
     }
 
-    public String getClassificacao() {
+    public Integer getClassificacao() {
         return classificacao;
     }
 
-    public void setClassificacao(String classificacao) {
+    public void setClassificacao(Integer classificacao) {
         this.classificacao = classificacao;
     }
 
@@ -105,12 +110,12 @@ public class Jogo implements Serializable {
         this.requisitos = requisitos;
     }
 
-    public Double getNotas() {
-        return notas;
+    public Double getNota() {
+        return nota;
     }
 
-    public void setNotas(Double notas) {
-        this.notas = notas;
+    public void setNota(Double nota) {
+        this.nota = nota;
     }
 
     public Genero getGenero() {
@@ -136,13 +141,11 @@ public class Jogo implements Serializable {
     public void setBiblioteca(Biblioteca biblioteca) {
         this.biblioteca = biblioteca;
     }
-    
-    
 
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 97 * hash + Objects.hashCode(this.Id);
+        hash = 47 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -158,11 +161,9 @@ public class Jogo implements Serializable {
             return false;
         }
         final Jogo other = (Jogo) obj;
-        if (!Objects.equals(this.Id, other.Id)) {
+        if (!Objects.equals(this.id, other.id)) {
             return false;
         }
         return true;
     }
-    
-    
 }

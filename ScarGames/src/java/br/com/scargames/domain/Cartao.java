@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -29,15 +31,23 @@ public class Cartao implements Serializable {
     @Column(name="vencimento")
     private Date vencimento;
     
+    @JoinColumn(name="bandeira", referencedColumnName="id")
+    @ManyToOne(optional=false)
     private Bandeira bandeira;
+    
+    @JoinColumn(name="usuario",referencedColumnName="id")
+    @ManyToOne(optional=false)
+    private Usuario usuario;
 
     public Cartao() {
     }
 
-    public Cartao(Integer id, String numero, Date vencimento) {
+    public Cartao(Integer id, String numero, Date vencimento, Bandeira bandeira, Usuario usuario) {
         this.id = id;
         this.numero = numero;
         this.vencimento = vencimento;
+        this.bandeira = bandeira;
+        this.usuario = usuario;
     }
 
     public Integer getId() {
@@ -64,10 +74,26 @@ public class Cartao implements Serializable {
         this.vencimento = vencimento;
     }
 
+    public Bandeira getBandeira() {
+        return bandeira;
+    }
+
+    public void setBandeira(Bandeira bandeira) {
+        this.bandeira = bandeira;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 29 * hash + Objects.hashCode(this.id);
+        int hash = 3;
+        hash = 53 * hash + Objects.hashCode(this.id);
         return hash;
     }
 

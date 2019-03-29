@@ -26,7 +26,7 @@ import javax.validation.constraints.Size;
 @Table(name="genero")
 public class Genero implements Serializable {
     
-    @Id
+     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
     
@@ -35,9 +35,9 @@ public class Genero implements Serializable {
     @Size(min=1,max=45)
     private String descricao;
     
-    @OneToMany(mappedBy="id") // Erro
+    @OneToMany(mappedBy="id")
     private List<Jogo> jogos;
-    
+
     public Genero() {
     }
 
@@ -69,11 +69,11 @@ public class Genero implements Serializable {
     public void setJogos(List<Jogo> jogos) {
         this.jogos = jogos;
     }
-    
+
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 37 * hash + Objects.hashCode(this.id);
+        int hash = 7;
+        hash = 89 * hash + Objects.hashCode(this.id);
         return hash;
     }
 

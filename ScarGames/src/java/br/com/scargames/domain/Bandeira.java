@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import static javax.swing.text.StyleConstants.Size;
 import javax.validation.constraints.NotNull;
@@ -25,6 +26,7 @@ public class Bandeira implements Serializable{
     @Size(min=1,max=45)
     private String descricao;
     
+    @OneToMany(mappedBy="id")
     private List<Cartao> cartoes;
     
     public Bandeira() {
