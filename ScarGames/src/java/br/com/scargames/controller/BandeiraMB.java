@@ -4,19 +4,16 @@ import br.com.scargames.domain.Bandeira;
 import br.com.scargames.services.BandeiraService;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import javax.faces.bean.SessionScoped;
 
 @ManagedBean(name = "bandeiraMB")
-@ViewScoped
+@SessionScoped
 public class BandeiraMB {
     private Bandeira bandeira = new Bandeira();
     private List<Bandeira> bandeiras;
     
     public BandeiraMB() {
-        
+        this.listar();
     }
     
     public String novo(){
@@ -30,6 +27,7 @@ public class BandeiraMB {
     public String inserir(){
         BandeiraService service = new BandeiraService();
         if(service.inserir(bandeira)){
+            this.listar();
             return "list.xhtml?faces-redirect=true";
         }else{
             return null;
@@ -39,6 +37,7 @@ public class BandeiraMB {
     public String alterar(){
         BandeiraService service = new BandeiraService();
         if(service.alterar(bandeira)){
+            this.listar();
             return "list.xhtml?faces-redirect=true";
         }else{
             return null;
@@ -48,20 +47,14 @@ public class BandeiraMB {
     public String excluir(Bandeira bandeira){
         BandeiraService service = new BandeiraService();
         if(service.excluir(bandeira)){
+            this.listar();
             return "list.xhtml?faces-redirect=true";
         }else{
             return null;
         }
     }
-    public void recuperarBandeira(){
-        HttpServletRequest servReq = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
-        HttpSession session = servReq.getSession(true);
-        this.bandeira = (Bandeira) session.getAttribute("bandeira");
-    }
     public String carregarDados(Bandeira bandeira){
-        HttpServletRequest servReq = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
-        HttpSession session = servReq.getSession(true);
-        session.setAttribute("bandeira", bandeira);
+        this.bandeira = bandeira;
         return "alter.xhtml?faces-redirect=true";
     }
     
