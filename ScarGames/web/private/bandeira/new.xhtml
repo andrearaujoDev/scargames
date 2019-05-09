@@ -23,8 +23,8 @@
                 <div class="ui-g-1"></div>
             </div>
             <div align="center" style="margin-top: 20px;">
-                    <p:commandButton value="Inserir" action="#{bandeiraMB.inserir()}"/>
-                    <p:commandButton value="Cancelar" action="#{bandeiraMB.cancelar()}" immediate="true"/>
+                <p:commandButton value="Inserir" action="#{bandeiraMB.inserir()}" update="growl"/>
+                <p:commandButton value="Cancelar" action="#{bandeiraMB.cancelar()}" immediate="true"/>
             </div>
         </ui:define>
     </ui:composition>
