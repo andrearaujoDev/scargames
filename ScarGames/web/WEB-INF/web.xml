@@ -23,7 +23,7 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>private/genero/genero.xhtml</welcome-file>
+        <welcome-file>private/cidade/list.xhtml</welcome-file>
     </welcome-file-list>
     
     

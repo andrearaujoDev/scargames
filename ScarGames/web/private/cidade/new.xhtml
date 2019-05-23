@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="../templates/template.xhtml">
+        <ui:define name="titleWindow">Cadastrar Cidades</ui:define>
+        <ui:define name="content">
+            <div class="ui-g">
+                <div class="ui-g-1"></div>
+                <div class="ui-g-10">
+                    <h1>Cadastro de Cidades</h1>
+                </div>
+                <div class="ui-g-1"></div>
+                <div class="ui-g-1"></div>
+                <div class="ui-g-6">
+                    <p:inputText id="nome" placeholder="Nome" 
+                                 value="#{cidadeMB.cidade.nome}"
+                                 style="width: 95%;"/>
+                </div>
+                <div class="ui-g-1"></div>
+                <div class="ui-g-3">
+                    <p:selectOneMenu id="estado" value="#{cidadeMB.cidade.estado}" style="width: 95%;">
+                        <f:selectItems value="#{cidadeMB.nomes_estado}" ></f:selectItems>
+                    </p:selectOneMenu>
+                    
+                <br></br>
+                </div>
+                
+                <div class="ui-g-1"></div>
+            </div>
+            <div align="center" style="margin-top: 20px;">
+                <p:commandButton value="Inserir" action="#{cidadeMB.inserir()}" update="growl"/>
+                <p:commandButton value="Cancelar" action="#{cidadeMB.cancelar()}" immediate="true"/>
+            </div>
+        </ui:define>
+    </ui:composition>
+</html>
+
