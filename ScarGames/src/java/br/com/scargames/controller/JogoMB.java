@@ -41,6 +41,7 @@ public class JogoMB {
     
     public JogoMB() {
         this.listar();
+        listarSelectOneMenu();
         classificacao.add(12);
         classificacao.add(14);
         classificacao.add(16);
@@ -120,7 +121,9 @@ public class JogoMB {
     public void listar(){
         JogoService service = new JogoService();
         jogos = service.listar();
-        
+    }
+    
+    public void listarSelectOneMenu(){
         //Listar Genero no SelectOneMenu
         for(Genero g : generoService.listar()){
             listagenero.add(g.getDescricao());
