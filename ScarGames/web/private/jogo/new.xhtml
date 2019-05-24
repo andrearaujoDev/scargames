@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="../templates/template.xhtml">
+        <ui:define name="titleWindow">Cadastrar Jogos</ui:define>
+        <ui:define name="content">
+            <div class="ui-g">
+                <div class="ui-g-1"></div>
+                <div class="ui-g-10">
+                    <h1>Cadastro de Jogos</h1>
+                </div>
+                
+                <div class="ui-g-1"></div>
+                <div class="ui-g-1"></div>
+                <div class="ui-g-6">
+                    <p:inputText id="titulo" placeholder="Titulo" 
+                                 value="#{jogoMB.jogo.titulo}"
+                                 style="width: 95%;"/>
+                </div>
+                
+                <div class="ui-g-1"></div>
+                <div class="ui-g-3">
+                    <p:selectOneMenu id="classificacao" value="#{jogoMB.jogo.classificacao}" style="width: 95%;">
+                        <f:selectItems value="#{jogoMB.classificacao}" ></f:selectItems>
+                    </p:selectOneMenu>
+                </div>
+                
+                <div class="ui-g-1"></div>
+                <div class="ui-g-1"></div>
+                <div class="ui-g-6">
+                    <p:inputTextarea id="sinopse" placeholder="Sinopse" 
+                                     value="#{jogoMB.jogo.sinopse}"
+                                 style="width: 95%;"/>
+                </div>
+                <div class="ui-g-1"></div>
+                <div class="ui-g-3">
+                    <p:selectOneMenu id="genero" value="#{jogoMB.generoSelecionado}" style="width: 95%;">
+                        <f:selectItems value="#{jogoMB.listagenero}" ></f:selectItems>
+                    </p:selectOneMenu>
+                </div>
+                
+                <div class="ui-g-1"></div>
+                <div class="ui-g-1"></div>
+                <div class="ui-g-6">
+                    <p:inputTextarea id="requisitos" placeholder="Requisistos" 
+                                     value="#{jogoMB.jogo.requisitos}"
+                                     style="width: 95%;"/>
+                </div>
+                
+                <div class="ui-g-1"></div>
+                
+                <div class="ui-g-3">
+                    <p:selectOneMenu id="produtora" value="#{jogoMB.produtoraSelecionada}" style="width: 95%;">
+                        <f:selectItems value="#{jogoMB.listaprodutora}" ></f:selectItems>
+                    </p:selectOneMenu>
+                </div>
+                <div class="ui-g-1"></div>
+                <div class="ui-g-1"></div>
+                
+                <div class="ui-g-6">
+                    <p:inputText id="nota" placeholder="Nota" 
+                                 value="#{jogoMB.jogo.nota}"
+                                 style="width: 95%;"/>
+                </div>
+
+                
+            </div>
+            <div align="center" style="margin-top: 20px;">
+                <p:commandButton value="Inserir" action="#{jogoMB.inserir()}" update="growl"/>
+                <p:commandButton value="Cancelar" action="#{jogoMB.cancelar()}" immediate="true"/>
+            </div>
+        </ui:define>
+    </ui:composition>
+</html>
+
