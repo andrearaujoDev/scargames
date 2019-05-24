@@ -25,7 +25,10 @@
                 <div class="ui-g-1"></div>
                 <div class="ui-g-3">
                     <p:selectOneMenu id="classificacao" value="#{jogoMB.jogo.classificacao}" style="width: 95%;">
-                        <f:selectItems value="#{jogoMB.classificacao}" ></f:selectItems>
+                        <f:selectItem itemLabel="12" itemValue="12" />
+                        <f:selectItem itemLabel="14" itemValue="14" />
+                        <f:selectItem itemLabel="16" itemValue="16" />
+                        <f:selectItem itemLabel="18" itemValue="18" />
                     </p:selectOneMenu>
                 </div>
                 
@@ -38,8 +41,9 @@
                 </div>
                 <div class="ui-g-1"></div>
                 <div class="ui-g-3">
-                    <p:selectOneMenu id="genero" value="#{jogoMB.generoSelecionado}" style="width: 95%;">
-                        <f:selectItems value="#{jogoMB.listagenero}" ></f:selectItems>
+                    <p:selectOneMenu value="#{jogoMB.jogo.genero}" style="width: 95%;" converter="entityConverter" >
+                        <f:selectItems value="#{generoMB.generos}" var="genero" itemLabel="#{genero.descricao}" 
+                                       itemValue="#{genero}"></f:selectItems>
                     </p:selectOneMenu>
                 </div>
                 
@@ -54,8 +58,9 @@
                 <div class="ui-g-1"></div>
                 
                 <div class="ui-g-3">
-                    <p:selectOneMenu id="produtora" value="#{jogoMB.produtoraSelecionada}" style="width: 95%;">
-                        <f:selectItems value="#{jogoMB.listaprodutora}" ></f:selectItems>
+                    <p:selectOneMenu value="#{jogoMB.jogo.produtora}" style="width: 95%;" converter="entityConverter">
+                        <f:selectItems value="#{produtoraMB.produtoras}" var="produtora" itemLabel="#{produtora.nome}" 
+                                       itemValue="#{produtora}"></f:selectItems>
                     </p:selectOneMenu>
                 </div>
                 <div class="ui-g-1"></div>
