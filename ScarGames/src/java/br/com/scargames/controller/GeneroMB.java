@@ -38,7 +38,6 @@ public class GeneroMB {
     
     public void carregarDados(Genero genero){
         this.genero = genero;
-      
     }
     
     public void excluir(Genero genero){

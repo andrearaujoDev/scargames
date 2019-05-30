@@ -33,8 +33,8 @@
                         <h:outputText value="#{genero.descricao}"/>
                     </p:column>
                     <p:column headerText="Editar" width="70" style="text-align: center;">
-                        <p:commandButton icon="ui-icon-pencil" action="#{generoMB.carregarDados(genero)}"
-                                         onclick="PF('gestaoGenero').show()" immediate="true"
+                        <p:commandButton icon="ui-icon-pencil" onclick="PF('gestaoGenero').show()" 
+                                         action="#{generoMB.carregarDados(genero)}" immediate="true"
                                          update="form:growl"/>
                     </p:column>
                     <p:column headerText="Excluir" width="70" style="text-align: center;">

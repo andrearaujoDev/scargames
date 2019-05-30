@@ -17,10 +17,6 @@ public class CidadeMB {
     private List<String> nomes_estado = new ArrayList<>();
     public CidadeMB() {
         this.listar();
-        nomes_estado.add("RJ");
-        nomes_estado.add("MG");
-        nomes_estado.add("SP");
-        nomes_estado.add("RS");
     }
     
     public String novo(){

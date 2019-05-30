@@ -4,6 +4,7 @@ import br.com.scargames.domain.Usuario;
 import br.com.scargames.services.UsuarioService;
 import br.com.scargames.util.UtilMessages;
 import java.io.Serializable;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
@@ -12,11 +13,13 @@ import javax.faces.bean.RequestScoped;
 public class UsuarioMB implements Serializable{
     Usuario usuario = new Usuario();
     
+    private List<Usuario> usuarios;
+    
     public String email;
     public String senha;
     
     public UsuarioMB() {
-        
+        this.listar();
     }
     
     public void inicializarHibernate(){
@@ -33,6 +36,11 @@ public class UsuarioMB implements Serializable{
             UtilMessages.messageError("Dados Invalidos !");
             return null;
         }
+    }
+    
+    public void listar(){
+        UsuarioService service = new UsuarioService();
+        usuarios = service.listar();
     }
     
     public Usuario getUsuario() {
@@ -58,4 +66,16 @@ public class UsuarioMB implements Serializable{
     public void setSenha(String senha) {
         this.senha = senha;
     }
+
+    public List<Usuario> getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(List<Usuario> usuarios) {
+        this.usuarios = usuarios;
+    }
+
+    
+    
+    
 }

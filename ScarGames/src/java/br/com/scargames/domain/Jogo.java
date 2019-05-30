@@ -45,6 +45,10 @@ public class Jogo implements Serializable {
     @Column(name="nota")
     private Double nota;
     
+    @NotNull
+    @Column(name="preco")
+    private float preco;
+    
     @JoinColumn(name="genero",referencedColumnName="id")
     @ManyToOne(optional=false)
     private Genero genero;
@@ -142,6 +146,14 @@ public class Jogo implements Serializable {
         this.biblioteca = biblioteca;
     }
 
+    public float getPreco() {
+        return preco;
+    }
+
+    public void setPreco(float preco) {
+        this.preco = preco;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 3;

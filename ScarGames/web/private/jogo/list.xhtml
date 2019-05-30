@@ -56,6 +56,10 @@
                         <f:facet name="header">Produtora</f:facet>
                         <h:outputText value="#{jogo.produtora.nome}"/>
                     </p:column>
+                    <p:column>
+                        <f:facet name="header">Preço</f:facet>
+                        <h:outputText value="#{jogo.preco}"/>
+                    </p:column>
                     <p:column headerText="Editar" width="70" style="text-align: center;">
                         <p:commandButton icon="ui-icon-pencil" action="#{jogoMB.carregarDados(jogo)}"/>
                     </p:column>
