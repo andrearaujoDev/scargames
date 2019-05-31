@@ -46,7 +46,9 @@
                     </p:column>
                     <p:column>
                         <f:facet name="header">Nota</f:facet>
-                        <h:outputText value="#{jogo.nota}"/>
+                        <h:outputText value="#{jogo.nota}">
+                            <f:convertNumber pattern="#0.0"/>
+                        </h:outputText>
                     </p:column>
                     <p:column>
                         <f:facet name="header">Genero</f:facet>
@@ -58,7 +60,9 @@
                     </p:column>
                     <p:column>
                         <f:facet name="header">Preço</f:facet>
-                        <h:outputText value="#{jogo.preco}"/>
+                        <h:outputText  value="#{jogo.preco}">
+                            <f:convertNumber pattern="#0.00" />
+                        </h:outputText>
                     </p:column>
                     <p:column headerText="Editar" width="70" style="text-align: center;">
                         <p:commandButton icon="ui-icon-pencil" action="#{jogoMB.carregarDados(jogo)}"/>

@@ -42,7 +42,10 @@
                 <div class="ui-g-1"></div>
                 <div class="ui-g-1"></div>
                 <div class="ui-g-3">
-                    <p:calendar id="popup" value="#{cartaoMB.cartao.vencimento}" placeholder="Data de Vencimento"/>
+                    <p:calendar mask="true" pattern="dd/MM/yyyy" 
+                                timeOnly="false" id="popup" 
+                                value="#{cartaoMB.cartao.vencimento}" placeholder="Data de Vencimento"
+                                mindate="#{cartaoMB.currentDate}"/>
                 </div>
                 
                 <div class="ui-g-1"></div>

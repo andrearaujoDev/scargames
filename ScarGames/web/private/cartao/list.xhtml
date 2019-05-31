@@ -35,7 +35,9 @@
                     </p:column>
                     <p:column>
                         <f:facet name="header">Vencimento</f:facet>
-                        <h:outputText value="#{cartao.vencimento}"/>
+                        <h:outputText value="#{cartao.vencimento}">
+                            <f:convertDateTime pattern="dd/MM/yyyy"/>
+                        </h:outputText>
                     </p:column>
                     <p:column>
                         <f:facet name="header">Bandeira</f:facet>

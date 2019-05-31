@@ -3,6 +3,8 @@ package br.com.scargames.controller;
 import br.com.scargames.domain.Cartao;
 import br.com.scargames.services.CartaoService;
 import br.com.scargames.util.UtilMessages;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -14,6 +16,8 @@ public class CartaoMB {
     private Cartao cartao = new Cartao();
     private List<Cartao> cartoes;
     
+    private Date currentDate = new Date();
+
     
     public CartaoMB() {
         this.listar();
@@ -71,6 +75,13 @@ public class CartaoMB {
         CartaoService service = new CartaoService();
         cartoes = service.listar();
     }
+    
+    public String formatarData(Date data) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        dateFormat.setLenient(false);
+
+        return dateFormat.format(data);
+    }
 
     public Cartao getCartao() {
         return cartao;
@@ -86,6 +97,10 @@ public class CartaoMB {
 
     public void setCartoes(List<Cartao> cartoes) {
         this.cartoes = cartoes;
+    }
+    
+    public Date getCurrentDate() {
+        return currentDate;
     }
     
     
