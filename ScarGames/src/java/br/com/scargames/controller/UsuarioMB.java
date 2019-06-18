@@ -79,6 +79,30 @@ public class UsuarioMB {
         }
     }
     
+    public String adicionarNovoEndereco(){
+        int idusuario = 0;
+        UsuarioService service = new UsuarioService();
+        EnderecoService serviceEndereco = new EnderecoService();
+        for(Usuario u : service.listar()){
+            if(u.getEmail().equals(usuario.getEmail())){
+                idusuario = u.getId();
+            }
+        }
+        
+        usuario.setId(idusuario);
+        endereco.setUsuario(usuario);
+        System.out.println("Usuario : " + endereco.getUsuario().getEmail());
+        System.out.println("Endereco(Logradouro) : " + endereco.getLogradouro());
+        if(serviceEndereco.inserir(endereco)){
+            enderecos.add(endereco);
+            return "alter.xhtml?faces-redirect=true";
+        }else{
+            UtilMessages.messageInfo("Erro ao inserir !!!");
+            return null;
+        }
+        
+    }
+    
     public String alterar(){
         UsuarioService service = new UsuarioService();
         if(service.alterar(usuario)){
@@ -172,12 +196,25 @@ public class UsuarioMB {
         endereco = new Endereco();
     }
     
+    public String novoEnderecoUpdateUser(){
+        endereco = new Endereco();
+        return "novoEndereco.xhtml?faces-redirect=true";
+        
+    }
+    
     public String novo(){
+        usuario = new Usuario();
+        enderecos = new ArrayList<>();
+        
         return "new.xhtml?faces-redirect=true";
     }
     
     public String cancelar(){
         return "list.xhtml?faces-redirect=true";
+    }
+    
+    public String voltarAlter(){
+        return "alter.xhtml?faces-redirect=true";
     }
     
     public Usuario getUsuario() {
@@ -235,6 +272,7 @@ public class UsuarioMB {
     public void setIdUsuario(int idUsuario) {
         this.idUsuario = idUsuario;
     }
-
+    
+    
 
 }

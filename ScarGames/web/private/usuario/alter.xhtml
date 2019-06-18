@@ -70,16 +70,28 @@
                 <div class="ui-g-6"></div>
                 <div class="ui-g-5"></div>
                 <div align="center" style="margin-top: 20px;">
-                    <p:commandButton value="Inserir" action="#{usuarioMB.inserir()}" update="growl"/>
+                    <p:commandButton value="Alterar" action="#{usuarioMB.alterar()}" update="growl"/>
                     <p:commandButton value="Cancelar" action="#{usuarioMB.cancelar()}" immediate="true"/>
                 </div>
                 </div>
-                <div class="ui-g-6"></div>
+                <div class="ui-g-1"></div>
+                <div class="ui-g-10">
+                    <h1>Alteração de Endereços do(a) #{usuarioMB.usuario.nome}</h1>
+                </div>
+                <div class="ui-g-11"></div>
+                 <div class="ui-g-1">
+                            <p:commandLink action="#{usuarioMB.novoEnderecoUpdateUser()}" immediate="true">
+                    <p:graphicImage url="/resources/img/add_adress.png" title="Novo Endereço"
+                                    height="40" width="40" />
+                    </p:commandLink>
+                </div>
+                
                 <div class="ui-g-12">
                     <p:dataTable id="tabelaEndereco" value="#{usuarioMB.enderecos}" var="endereco" 
                              paginator="true" paginatorPosition="bottom" 
                              rows="10" emptyMessage="Nenhum Registro Encontrado">
                     <f:facet name="header">
+                       
                         <h:column>
                             <p:inputText value="#{usuarioMB.endereco.logradouro}" placeholder="Logradouro"/>
                         </h:column>
@@ -102,8 +114,9 @@
                                                itemValue="#{cidade}"></f:selectItems>
                             </p:selectOneMenu>
                         </h:column>
-                        <h:column>
-                            <p:commandButton value="Alterar" onclick="#{usuarioMB.alterarEndereco()}" update="form:growl,tabelaEndereco" />
+                        
+                        <h:column >
+                            <p:commandButton value="Alterar" action="#{usuarioMB.alterarEndereco()}" update="form:growl,tabelaEndereco" style="padding-right: 10px;"/>
                         </h:column>
                         
                      </f:facet>
