@@ -3,7 +3,10 @@ package br.com.scargames.controller;
 import br.com.scargames.domain.Jogo;
 import br.com.scargames.services.JogoService;
 import br.com.scargames.util.UtilMessages;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -15,7 +18,7 @@ public class JogoMB {
     
     private Jogo jogo = new Jogo();
     private List<Jogo> jogos;
-    
+    private String precoJogo = "";
     
     public JogoMB() {
         this.listar();
@@ -31,7 +34,7 @@ public class JogoMB {
     
     public String inserir(){
         JogoService service = new JogoService();
-        
+        jogo.setPreco(Float.parseFloat(precoJogo));
         if(service.inserir(jogo)){
             UtilMessages.messageInfo("Cadastrado com sucesso !!!");
             this.listar();
@@ -74,6 +77,15 @@ public class JogoMB {
         jogos = service.listar();
     }
     
+    public void format() {  
+        DecimalFormat df = (DecimalFormat) DecimalFormat.getCurrencyInstance(Locale.US);
+        ((DecimalFormat)df).applyPattern("0.00");
+        double numeroFormatar = Double.parseDouble(precoJogo);
+        
+        String numero = df.format(numeroFormatar);
+        precoJogo = numero;
+    }
+    
     public Jogo getJogo() {
         return jogo;
     }
@@ -90,4 +102,12 @@ public class JogoMB {
         this.jogos = jogos;
     }
 
+    public String getPrecoJogo() {
+        return precoJogo;
+    }
+
+    public void setPrecoJogo(String precoJogo) {
+        this.precoJogo = precoJogo;
+    }
+    
 }

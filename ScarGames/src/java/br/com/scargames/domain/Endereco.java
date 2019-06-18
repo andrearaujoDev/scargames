@@ -28,7 +28,7 @@ public class Endereco implements Serializable{
     @Size(min=1,max=20)
     private String numero;
     @NotNull
-    @Column(name="complement0")
+    @Column(name="complemento")
     @Size(min=1,max=30)
     private String complemento;
     @NotNull

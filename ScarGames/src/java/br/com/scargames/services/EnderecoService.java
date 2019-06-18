@@ -16,6 +16,10 @@ public class EnderecoService {
         return enderecoDao.consulta(id);
     }
     
+    public List<Endereco> listaPorUsuario(Integer id){
+        return enderecoDao.listaPorUsuario(id);
+    }
+    
     public Boolean inserir(Endereco endereco){
         return enderecoDao.inserir(endereco);
     }

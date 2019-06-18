@@ -59,7 +59,6 @@ public class Jogo implements Serializable {
     
     @OneToOne(mappedBy="jogo")
     private Biblioteca biblioteca;
-
     public Jogo() {
     }
 

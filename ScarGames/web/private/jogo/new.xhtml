@@ -79,9 +79,13 @@
                 <div class="ui-g-1"></div>
                 <div class="ui-g-1"></div>
                 <div class="ui-g-6">
-                   <p:inputText id="preco" placeholder="Preço" 
-                                 value="#{jogoMB.jogo.preco}"
-                                 style="width: 95%;"/>
+                    <p:inputText id="preco" placeholder="Preço" 
+                                 value="#{jogoMB.precoJogo}"
+                                 style="width: 95%;" >
+                        
+                        <p:ajax event="blur" update="preco" listener="#{jogoMB.format()}"/>
+                    </p:inputText>
+                    <p:outputLabel id="teste"/>
                 </div>
 
                 

@@ -12,6 +12,10 @@ public class BibliotecaService {
         return bibliotecaDao.lista();
     }
     
+    public List<Biblioteca> listaPorUsuario(Integer id){
+        return bibliotecaDao.listaPorUsuario(id);
+    }
+    
     public Biblioteca consultar(Integer id ){
         return bibliotecaDao.consulta(id);
     }

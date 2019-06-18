@@ -34,6 +34,20 @@ public class EnderecoDao {
         }
     }
     
+    public List<Endereco> listaPorUsuario(Integer id){
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        try{
+            List<Endereco> endereco = session.createQuery("from Endereco where usuario = " + id).list();
+            session.getTransaction().commit();
+            return endereco;
+        }catch(Exception e){
+            session.getTransaction().rollback();
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
     public Boolean inserir(Endereco endereco){
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();

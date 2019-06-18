@@ -20,6 +20,20 @@ public class BibliotecaDao {
         }
     }
     
+    public List<Biblioteca> listaPorUsuario(Integer id){
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        try{
+            List<Biblioteca> lista = session.createQuery("from Biblioteca where usuario = " + id).list();
+            session.getTransaction().commit();
+            return lista;
+        }catch(Exception e){
+            session.getTransaction().rollback();
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
     public Biblioteca consulta(Integer id){
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
